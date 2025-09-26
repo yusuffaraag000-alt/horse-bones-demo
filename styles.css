@@ -1,0 +1,218 @@
+/* ===== General Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  direction: ltr;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: #fff;
+}
+
+/* ===== Landing Page Styles ===== */
+.content {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+.content h1 {
+  margin-bottom: 20px;
+}
+
+.content a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+.content a:hover {
+  color: #ffcc00;
+}
+
+.enter-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1.6rem;
+  background-color: #00ffff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.enter-button:hover {
+  background-color: #ffcc00;
+}
+
+.designer {
+  margin-top: 15px;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* ===== Container Split ===== */
+#container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Sidebar (تصغير القائمة) ===== */
+#sidebar {
+  width: 20%; 
+  min-width: 250px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  overflow-y: auto;
+  border-left: 2px solid #00c3ff;
+  box-shadow: -2px 0 10px rgba(0, 195, 255, 0.2);
+}
+
+#sidebar h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+  color: #00e0ff;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+#boneList {
+  list-style: none;
+}
+
+#boneList li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#boneList li:hover {
+  background: rgba(0, 224, 255, 0.2);
+  transform: translateX(-5px);
+}
+
+#boneInfo {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#boneInfo img {
+  max-width: 100%;
+  margin-top: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+/* ===== Viewer Area (أخذ الباقي من الشاشة) ===== */
+#viewer {
+  width: 80%; /* يأخذ الباقي من الشاشة */
+  position: relative;
+  background: radial-gradient(circle at center, #0d0d1a, #1a1a2e, #000);
+  box-shadow: inset 0 0 80px rgba(0, 224, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+/* ===== Back Button ===== */
+#viewerTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#backButton {
+  background: rgba(0, 195, 255, 0.8);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+#backButton:hover {
+  background: rgba(0, 255, 255, 1);
+  transform: scale(1.05);
+}
+
+/* ===== Extra Info Panel ===== */
+#extraInfo {
+  background: rgba(0, 0, 0, 0.6);
+  color: #00e0ff;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #00c3ff;
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+  width: 200px;
+}
+
+.hidden {
+  display: none;
+}
+
+#extraInfo ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+#extraInfo ul li {
+  margin-bottom: 5px;
+}
+
+#extraInfo ul li a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#extraInfo ul li a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.page-exit {
+  animation: pageExit 1s forwards;
+}
+
+@keyframes pageExit {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(0.7) rotate(10deg); opacity: 0.7; }
+  100% { transform: scale(0.3) translateX(100%); opacity: 0; }
+}
+
+
+.page-enter {
+  animation: pageEnter 1s forwards;
+}
+
+@keyframes pageEnter {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}

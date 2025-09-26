@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horse Skeleton Viewer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-enter">
+<div id="container">
+  <div id="sidebar">
+    <h2>Bone List</h2>
+    <ul id="boneList"></ul>
+    <div id="boneInfo"><b>Select a bone from the list</b></div>
+  </div>
+  <div id="viewer">
+    <div id="viewerTop">
+      <button id="backButton" type="button">🔙 Back</button>
+    </div>
+    <div id="extraInfo" class="hidden"></div>
+  </div>
+</div>
+
+<!-- Three.js Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+<!-- JS الخاص بالمشروع -->
+<script src="script.js"></script>
+</body>
+</html>
