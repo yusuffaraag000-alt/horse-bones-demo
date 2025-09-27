@@ -216,3 +216,10 @@ body, html {
   0%   { transform: translateX(-100%); opacity: 0; }
   100% { transform: translateX(0); opacity: 1; }
 }
+body {
+  background-image: url('anatomy.jpg.jpg'); /* اسم الصورة */
+  background-size: cover;               /* تغطي كامل الصفحة */
+  background-position: center;          /* تمركز الصورة */
+  background-repeat: no-repeat;         /* منع تكرار الصورة */
+  background-attachment: fixed;         /* الصورة ثابتة عند التمرير */
+}
