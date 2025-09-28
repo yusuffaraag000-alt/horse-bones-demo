@@ -1,3 +1,4 @@
+
 let scene, camera, renderer, controls, model;
 const boneList = document.getElementById("boneList");
 const boneInfo = document.getElementById("boneInfo");
@@ -236,3 +237,11 @@ function animate() {
 init();
 loadBoneData();
 loadModel();
+function enterSite() {
+  let transition = document.querySelector(".page-transition");
+  transition.classList.add("active");
+
+  setTimeout(() => {
+    window.location.href = "start.html";
+  }, 800); // نفس وقت الـ transition في CSS
+}

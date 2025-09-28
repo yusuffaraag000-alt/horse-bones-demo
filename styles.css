@@ -223,3 +223,17 @@ body {
   background-repeat: no-repeat;         /* منع تكرار الصورة */
   background-attachment: fixed;         /* الصورة ثابتة عند التمرير */
 }
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #000; /* اللون اللي هيغطي الشاشة */
+  z-index: 9999;
+  transition: left 0.8s ease-in-out;
+}
+
+.page-transition.active {
+  left: 0;
+}

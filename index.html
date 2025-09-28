@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مرحبا بك</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="page-transition"></div>
 <div class="content">
 <h1>Veterinary Anatomy Education Platform</h1>
   <h2>3D model by 
     <a href="https://sketchfab.com/3d-models/horse-skeleton-eaca504567604e879b8ab2cf2763025e" target="_blank">Sketchfab</a>
   </h2>
-  <button class="enter-button" onclick="enterSite()"><h4>Start my project</h4></button>
+  <button id="goStart" class="enter-button" onclick="enterSite()"><h4>Start my project</h4></button>
   <div class="designer"><h3>Model improvement and design by Yusuffaraag</h3>
 
   </div>
@@ -20,10 +22,18 @@
 
 <script>
 function enterSite() {
-  window.location.href = "viewer.html";
+  window.location.href = "start.html";
 }
 </script>
-<script src="transition.js"></script>
+<script src="script.js"></script>
+<img src="logo.jpg.jpg" alt="Logo"
+     style="position:absolute;
+            top:20px;
+            left:20px;
+            width:100px;
+            height:auto;
+            border-radius:8px;">
+            
 
 </body>
 </html>

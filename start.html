@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> What do you like to learn?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #110f0f;
+      color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 80%;
+      max-width: 900px;
+    }
+    .card {
+      background: #000000;
+      color: #1e90ff; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      border: 2px solid #1e90ff;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background: #1e90ff;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="grid">
+    <div class="card" onclick="location.href='viewer.html'">Bone 3D</div>
+    <div class="card" onclick="location.href='Soon.html'">Body organs </div>
+    <div class="card" onclick="location.href='SOON.html'">Files</div>
+  </div>
+  <h1 style="margin-top:80px;
+           text-align:center;
+           font-size:36px;
+           font-weight:bold;
+           color:#1e90ff;
+           text-shadow:0 0 8px rgba(30,144,255,0.3);
+           letter-spacing:10px;">
+  ?What do you want to learn
+</h1>
+
+</body>
+</html>
