@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horse Model</title>
+    <link rel="stylesheet" href="styles2.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div id="label" aria-hidden="true"></div>
+
+    <!-- زرار إظهار القائمة -->
+    <button id="toggleSidebar">Parts</button>
+
+    <!-- القائمة الجانبية -->
+    <div id="sidebar">
+      <h3>أجزاء الحصان</h3>
+      <ul></ul>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

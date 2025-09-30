@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nooooo</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 5px solid red;
+      box-shadow: 0 0 30px red;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: red;
+      text-shadow: 0 0 20px red, 0 0 40px red;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: red;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px red, 0 0 30px red;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h1>هذا محتوى تجريبي ووارد ان ايكون به أخطاء
+    (This is experimental content and may contain errors .)
+  </h1>
+  <button onclick="window.location.href='start.html'">Start</button>
+</body>
+</html>
