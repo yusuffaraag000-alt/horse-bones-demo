@@ -242,6 +242,7 @@ function enterSite() {
   transition.classList.add("active");
 
   setTimeout(() => {
-    window.location.href = "end.html";
+    window.location.href = "start.html";
   }, 800); // نفس وقت الـ transition في CSS
 }
+
