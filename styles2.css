@@ -6,7 +6,7 @@ body, html {
   overflow: hidden;
   font-family: "Cairo", sans-serif;
   background: black;
-  color: white;
+  color: rgb(187, 173, 173);
 }
 
 /* مكان عرض الموديل */

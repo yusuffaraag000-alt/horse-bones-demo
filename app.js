@@ -22,39 +22,40 @@ controls.enableDamping = true;
 
 // ====================
 // 🔆 الإضـــــاءة
-// ====================
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+// ====================// ضوء عام خفيف
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // كانت 1.0
 scene.add(ambientLight);
 
-// فوق
-const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-dirLight1.position.set(5, 10, 5);
+// فوق (خفيف جدًا)
+const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.2); // كانت 0.0
+dirLight1.position.set(3, 5, 3);
 scene.add(dirLight1);
 
 // يمين/خلف
-const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.4); // كانت 0.8
 dirLight2.position.set(-5, 10, -5);
 scene.add(dirLight2);
 
 // قدام
-const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.6);
+const dirLight3 = new THREE.DirectionalLight(0xffffff, .5); // كانت 0.6
 dirLight3.position.set(0, 5, 10);
 scene.add(dirLight3);
 
 // ورا
-const dirLight4 = new THREE.DirectionalLight(0xffffff, 0.6);
+const dirLight4 = new THREE.DirectionalLight(0xffffff, 0.3); // كانت 0.6
 dirLight4.position.set(0, 5, -10);
 scene.add(dirLight4);
 
-// تحت (إضاءة من تحت لفوق)
-const dirLightBottom = new THREE.DirectionalLight(0xffffff, 0.6);
+// تحت (خفيف)
+const dirLightBottom = new THREE.DirectionalLight(0xffffff, 0.2); // كانت 0.6
 dirLightBottom.position.set(0, -5, 0);
 scene.add(dirLightBottom);
 
 // PointLight تحت الموديل
-const pointLightBottom = new THREE.PointLight(0xffffff, 0.4);
+const pointLightBottom = new THREE.PointLight(0xffffff, 0.2); // كانت 0.4
 pointLightBottom.position.set(0, -3, 0);
 scene.add(pointLightBottom);
+
 
 // ====================
 // 📦 تحميل موديل الحصان
@@ -96,7 +97,7 @@ function selectPart(obj) {
   if (obj.material) {
     obj.material = obj.material.clone();
     lastOriginalColor = obj.material.color.clone();
-    obj.material.color.set(0xff0000);
+    obj.material.color.set(0xff0001);
   }
 
   // خزن الجزء الحالي كآخر جزء
@@ -115,7 +116,7 @@ window.addEventListener("click", (event) => {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-  raycaster.setFromCamera(mouse, camera);
+  raycaster.setFromCamera(mouse, camera,Touch);
   const intersects = raycaster.intersectObjects(scene.children, true);
 
   if (intersects.length > 0) {
@@ -156,7 +157,7 @@ function highlightSidebarItem(partName) {
   const items = document.querySelectorAll("#sidebar li");
   items.forEach((item) => {
     if (item.dataset.partName === partName) {
-      item.style.background = "rgba(255, 0, 0, 0.3)";
+      item.style.background = "rgba(170, 38, 38, 1)";
     } else {
       item.style.background = "transparent";
     }
