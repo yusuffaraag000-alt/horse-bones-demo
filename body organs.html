@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soon</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000000;
+      border: 6px solid #1e90ff;
+      box-sizing: border-box;
+    }
+ .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 80%;
+      max-width: 900px;
+    }
+    .card {
+      background: #000000;
+      color: #1e90ff; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      border: 2px solid #1e90ff;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background: #1e90ff;
+      color: #000000;
+    }
+   
+  </style>
+</head>
+<body>
+<button id="openLinkButton" style="
+  background-color: #1E90FF; 
+  color: white; 
+  padding: 15px 40px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer;
+  font-size: 20px; 
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+">
+ Ruminant, Stomach
+</button>
+
+<script>
+   const myLink = "https://sketchfab.com/3d-models/ruminant-stomachomentum-majus-89fe35a64ffa463e8906636bc8b55d39";
+
+  document.getElementById("openLinkButton").onclick = function() {
+    window.open(myLink, "_blank"); // تفتح في تاب جديد
+  };
+</script>
+
+</body>
+</html>
