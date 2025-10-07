@@ -1,69 +1,47 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <link rel="stylesheet" href="styles.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <style>
-    body {
-   
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-      font-family: "Tajawal", sans-serif;
-    }
-    .login-box {
-      background: rgb(3, 1, 1);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(8, 92, 160, 0.1);
-      text-align: center;
-      width: 300px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      width: 100%;
-      margin-top: 12px;
-      padding: 10px;
-      background: #166ea1;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #1b5e20;
-    }
-    p { color: red; font-size: 14px; }
-  </style>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرحبا بك</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="login-box">
-    <h2>🔒Password please</h2>
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="checkPassword()">Enter</button>
-    <p id="error"></p>
-  </div>
+  <div class="page-transition"></div>
+<div class="content">
+<h1>The Black Horse</h1>
+  <h2>3D models by 
+    <a href="https://sketchfab.com/3d-models/horse-skeleton-eaca504567604e879b8ab2cf2763025e" target="_blank">Sketchfab</a>
+  </h2>
+  <button id="goStart" class="enter-button" onclick="enterSite()"><h4>Start my project</h4></button>
+  <div class="designer"><h3>Model improvement and web design by Yusuffaraag</h3>
 
-  <script>
-    const PASSWORD = "207"; // ← دي كلمة السر يا صديقي اكتبها وادخل
-    function checkPassword() {
-      const input = document.getElementById("password").value;
-      if (input === PASSWORD) {
-        // لو الكلمة صحيحة، يدخل على الموقع
-        window.location.href = "index3.html"; // ← اسم الصفحة الرئيسية
-      } else {
-        document.getElementById("error").textContent = "❌ كلمة السر غلط";
-      }
-    }
-  </script>
+  </div>
+</div>
+
+<script>
+function enterSite() {
+  window.location.href = "no.html";
+}
+</script>
+<script src="script.js"></script>
+<img src="logo.jpg.jpg" alt="Logo"
+     style="position:absolute;
+            top:20px;
+            left:20px;
+            width:100px;
+            height:auto;
+            border-radius:8px;">
+            
+            <img src="faraag.jpg" alt="Logo"
+     style="position:absolute;
+            top:20px;
+            right:20px;
+            width:100px;
+            height:auto;
+            border-radius:8px;">
+            
+
 </body>
 </html>
