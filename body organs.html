@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soon</title>
+  <title>Ruminant Stomach - Science View</title>
   <style>
     body {
       margin: 0;
@@ -11,64 +11,74 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #000000;
-      border: 6px solid #1e90ff;
-      box-sizing: border-box;
-    }
- .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      width: 80%;
-      max-width: 900px;
-    }
-    .card {
-      background: #000000;
-      color: #1e90ff; 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 150px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      font-size: 20px;
-      font-weight: bold;
+      flex-direction: column;
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+      border: 3px solid #00bfff;
+      box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6f7ff;
       text-align: center;
-      border: 2px solid #1e90ff;
+      transition: background 0.5s ease-in-out;
     }
-    .card:hover {
-      transform: scale(1.05);
-      background: #1e90ff;
-      color: #000000;
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      color: #00bfff;
+      text-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease-in-out;
     }
-   
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      background: linear-gradient(90deg, #00bfff, #1e90ff);
+      color: #fff;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      box-shadow: 0 0 25px rgba(30, 144, 255, 0.5);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(0, 191, 255, 0.8);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      color: #0099cc;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
-<button id="openLinkButton" style="
-  background-color: #1E90FF; 
-  color: white; 
-  padding: 15px 40px; 
-  border: none; 
-  border-radius: 8px; 
-  cursor: pointer;
-  font-size: 20px; 
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.2s;
-">
- Ruminant, Stomach
-</button>
+  <h1>Scientific 3D Visualization: Ruminant Stomach</h1>
 
-<script>
-   const myLink = "https://sketchfab.com/3d-models/ruminant-stomachomentum-majus-89fe35a64ffa463e8906636bc8b55d39";
+  <button id="openLinkButton">Open 3D Model</button>
 
-  document.getElementById("openLinkButton").onclick = function() {
-    window.open(myLink, "_blank"); // تفتح في تاب جديد
-  };
+  <footer>© 2025 Scientific Visualization Lab</footer>
 
-  
-</script>
+  <script>
+    const myLink = "https://sketchfab.com/3d-models/ruminant-stomachomentum-majus-89fe35a64ffa463e8906636bc8b55d39";
+    document.getElementById("openLinkButton").onclick = function() {
+      window.open(myLink, "_blank");
+    };
+  </script>
+  <script src="enhancer.js"></script>
+  <script src="mobile-effects.js"></script>
+
 
 </body>
 </html>

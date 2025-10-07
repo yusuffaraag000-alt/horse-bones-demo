@@ -3,57 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nooooo</title>
+  <title>Scientific Interface</title>
   <style>
+    /* ===== Base Layout ===== */
     body {
       margin: 0;
       height: 100vh;
-      background: black;
+      background: radial-gradient(circle at top, #010713, #030e22, #000);
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      border: 5px solid rgb(19, 190, 133);
-      box-shadow: 0 0 30px red;
+      border: 3px solid rgba(0, 224, 255, 0.5);
+      box-shadow: 0 0 40px rgba(0, 224, 255, 0.3);
+      font-family: "Cairo", sans-serif;
+      overflow: hidden;
+      position: relative;
     }
 
+    /* ===== Animated background glow ===== */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(0, 224, 255, 0.1), transparent 70%);
+      animation: pulseGlow 6s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    /* ===== Heading ===== */
     h1 {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: rgb(24, 184, 72);
-      text-shadow: 0 0 20px rgb(18, 156, 71), 0 0 40px rgb(14, 156, 109);
-      animation: pulse 1s infinite alternate;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #00ffe5;
+      text-align: center;
+      max-width: 80%;
+      text-shadow: 0 0 20px rgba(0,255,200,0.5), 0 0 40px rgba(0,224,255,0.3);
+      animation: floatText 3s ease-in-out infinite;
+      letter-spacing: 0.5px;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.2); opacity: 0.7; }
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-6px); opacity: 0.9; }
     }
 
+    /* ===== Start Button ===== */
     button {
-      margin-top: 30px;
-      padding: 15px 40px;
+      margin-top: 40px;
+      padding: 14px 45px;
       font-size: 1.2rem;
       font-weight: bold;
-      color: white;
-      background: rgb(11, 179, 39);
+      color: #00151a;
+      background: linear-gradient(90deg, #00e0ff, #00ffa6);
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 0 15px rgb(68, 151, 20), 0 0 30px rgb(13, 175, 40);
-      transition: transform 0.2s, background 0.3s;
+      box-shadow: 0 0 25px rgba(0,224,255,0.4);
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      transform: scale(1.1);
-      background: rgb(10, 167, 31);
+      transform: scale(1.08);
+      box-shadow: 0 0 40px rgba(0,255,255,0.6);
+      background: linear-gradient(90deg, #00ffa6, #00e0ff);
     }
+
+    /* ===== Subtle footer text ===== */
+    .note {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+    }
+    /* تأثير الترانزيشن العام */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
   </style>
 </head>
 <body>
-  <h1>هذا محتوى تجريبي ووارد ان ايكون به أخطاء
-    (This is experimental content and may contain errors .)
+  <h1>
+    ⚠️ This is an experimental scientific interface.<br>
+    قد يحتوي المحتوى على أخطاء (Experimental content — may contain errors)
   </h1>
-  <button onclick="window.location.href='start.html'">Start</button>
+  <button onclick="window.location.href='start.html'">Start Experiment</button>
+  <div class="note">Scientific Prototype v1.0</div>
+  <script src="tr.js"></script>
+<script src="enhancer.js"></script>
 </body>
 </html>

@@ -1,8 +1,10 @@
 // app.js
 
-// إنشاء المشهد والكاميرا والرندر
+// ====================
+// 🎥 إعداد المشهد والكاميرا والرندر
+// ====================
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000022); // خلفية أزرق غامق
+scene.background = new THREE.Color(0x020314);
 
 const camera = new THREE.PerspectiveCamera(
   45,
@@ -14,109 +16,93 @@ camera.position.set(0, 2, 5);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.outputEncoding = THREE.sRGBEncoding;
 document.getElementById("container").appendChild(renderer.domElement);
 
-// أداة التحكم OrbitControls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
+controls.dampingFactor = 0.05;
 
 // ====================
-// 🔆 الإضـــــاءة
-// ====================// ضوء عام خفيف
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // كانت 1.0
-scene.add(ambientLight);
+// 💡 الإضاءة العلمية
+// ====================
+scene.add(new THREE.AmbientLight(0xffffff, 0.45));
 
-// فوق (خفيف جدًا)
-const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.2); // كانت 0.0
-dirLight1.position.set(3, 5, 3);
-scene.add(dirLight1);
+const light1 = new THREE.DirectionalLight(0xffffff, 0.6);
+light1.position.set(5, 10, 5);
+scene.add(light1);
 
-// يمين/خلف
-const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.4); // كانت 0.8
-dirLight2.position.set(-5, 10, -5);
-scene.add(dirLight2);
-
-// قدام
-const dirLight3 = new THREE.DirectionalLight(0xffffff, .5); // كانت 0.6
-dirLight3.position.set(0, 5, 10);
-scene.add(dirLight3);
-
-// ورا
-const dirLight4 = new THREE.DirectionalLight(0xffffff, 0.3); // كانت 0.6
-dirLight4.position.set(0, 5, -10);
-scene.add(dirLight4);
-
-// تحت (خفيف)
-const dirLightBottom = new THREE.DirectionalLight(0xffffff, 0.2); // كانت 0.6
-dirLightBottom.position.set(0, -5, 0);
-scene.add(dirLightBottom);
-
-// PointLight تحت الموديل
-const pointLightBottom = new THREE.PointLight(0xffffff, 0.2); // كانت 0.4
-pointLightBottom.position.set(0, -3, 0);
-scene.add(pointLightBottom);
-
+const light2 = new THREE.PointLight(0x00bfff, 0.5);
+light2.position.set(0, 3, 5);
+scene.add(light2);
 
 // ====================
-// 📦 تحميل موديل الحصان
+// 🐴 تحميل الموديل
 // ====================
 const loader = new THREE.GLTFLoader();
 let horseModel;
-loader.load("horse body.glb", function (gltf) {
-  horseModel = gltf.scene;
-  scene.add(horseModel);
-
-  // بعد التحميل: جهز القائمة الجانبية
-  prepareSidebar(horseModel);
-});
+loader.load(
+  "horse body.glb",
+  function (gltf) {
+    horseModel = gltf.scene;
+    horseModel.scale.set(1, 1, 1);
+    horseModel.traverse((child) => {
+      if (child.isMesh) {
+        child.material.metalness = 0.1;
+        child.material.roughness = 0.7;
+      }
+    });
+    scene.add(horseModel);
+    prepareSidebar(horseModel);
+  },
+  undefined,
+  function (error) {
+    console.error("حدث خطأ أثناء تحميل الموديل:", error);
+  }
+);
 
 // ====================
-// 🎯 التفاعل مع الأجزاء
+// 🧠 تفاعل مع الأجزاء
 // ====================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 const label = document.getElementById("label");
 
-// أسماء الأجزاء اللي ملغية التفاعل
-const ignoredParts = ["body", "horse body", "body of horse", "body_of_horse"];
-
-// تخزين الجزء اللي تم الضغط عليه آخر مرة
+const ignoredParts = ["body", "horse body", "body_of_horse"];
 let lastSelected = null;
 let lastOriginalColor = null;
+let glowIntensity = 0;
 
-// وظيفة تلوين جزء معين
+// تحديد جزء معين
 function selectPart(obj) {
   if (!obj || ignoredParts.includes(obj.name)) return;
 
-  // رجّع آخر جزء للونه الأصلي
-  if (lastSelected && lastSelected.material && lastOriginalColor) {
+  // رجع الجزء السابق للونه الأصلي
+  if (lastSelected && lastOriginalColor) {
     lastSelected.material.color.copy(lastOriginalColor);
   }
 
-  // انسخ الماتريال وخزّن اللون الأصلي
+  // تخزين اللون الأصلي وتطبيق لون مميز
   if (obj.material) {
     obj.material = obj.material.clone();
     lastOriginalColor = obj.material.color.clone();
-    obj.material.color.set(0xff0001);
+    obj.material.color.set(0xff0033);
   }
 
-  // خزن الجزء الحالي كآخر جزء
   lastSelected = obj;
 
-  // اعرض الاسم
+  // عرض الاسم
   label.textContent = obj.name;
   label.style.display = "block";
-
-  // حدّد العنصر في القائمة
   highlightSidebarItem(obj.name);
 }
 
-// الكليك بالماوس على الحصان
+// عند الضغط على الموديل
 window.addEventListener("click", (event) => {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-  raycaster.setFromCamera(mouse, camera,Touch);
+  raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(scene.children, true);
 
   if (intersects.length > 0) {
@@ -126,46 +112,32 @@ window.addEventListener("click", (event) => {
 });
 
 // ====================
-// 📋 القائمة الجانبية
+// 📋 إعداد القائمة الجانبية
 // ====================
 function prepareSidebar(model) {
-  const sidebar = document.getElementById("sidebar").querySelector("ul");
-  const parts = [];
-
+  const sidebarList = document.querySelector("#sidebar ul");
   model.traverse((child) => {
     if (child.isMesh && !ignoredParts.includes(child.name)) {
-      parts.push(child);
+      const li = document.createElement("li");
+      li.textContent = child.name;
+      li.dataset.partName = child.name;
+      li.addEventListener("click", () => selectPart(child));
+      sidebarList.appendChild(li);
     }
-  });
-
-  // بناء عناصر القائمة
-  parts.forEach((part) => {
-    const li = document.createElement("li");
-    li.textContent = part.name;
-    li.dataset.partName = part.name;
-
-    li.addEventListener("click", () => {
-      selectPart(part);
-    });
-
-    sidebar.appendChild(li);
   });
 }
 
-// تمييز الجزء المحدد في القائمة
 function highlightSidebarItem(partName) {
-  const items = document.querySelectorAll("#sidebar li");
-  items.forEach((item) => {
-    if (item.dataset.partName === partName) {
-      item.style.background = "rgba(170, 38, 38, 1)";
-    } else {
-      item.style.background = "transparent";
-    }
+  document.querySelectorAll("#sidebar li").forEach((item) => {
+    item.style.background =
+      item.dataset.partName === partName
+        ? "rgba(255, 0, 50, 0.4)"
+        : "transparent";
   });
 }
 
 // ====================
-// 🔘 زرار Parts لفتح/غلق القائمة
+// 🧭 زرار Parts
 // ====================
 const toggleButton = document.getElementById("toggleSidebar");
 const sidebar = document.getElementById("sidebar");
@@ -175,7 +147,7 @@ toggleButton.addEventListener("click", () => {
 });
 
 // ====================
-// 📏 تحديث الحجم
+// ⚙️ ضبط الحجم
 // ====================
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -184,11 +156,17 @@ window.addEventListener("resize", () => {
 });
 
 // ====================
-// 🎬 حلقة الأنيميشن
+// 🔁 الأنيميشن
 // ====================
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
+
+  // دوران بسيط للموديل لما المستخدم سايب الماوس
+  if (horseModel && !controls.userIsInteracting) {
+    horseModel.rotation.y += 0.001;
+  }
+
   renderer.render(scene, camera);
 }
 animate();

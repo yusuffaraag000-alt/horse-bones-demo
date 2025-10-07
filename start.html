@@ -1,66 +1,115 @@
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> What do you like to learn?</title>
+  <title>What do you like to learn?</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #110f0f;
-      color: #000000;
+      background: radial-gradient(circle at center, #0c0e12 0%, #000000 100%);
+      color: #eaf6ff;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
+
+    h1 {
+      margin-bottom: 60px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00bfff;
+      text-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+      letter-spacing: 6px;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      width: 80%;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 85%;
       max-width: 900px;
+      animation: fadeInUp 1.5s ease-out;
     }
+
     .card {
-      background: #000000;
-      color: #1e90ff; 
+      background: rgba(15, 20, 25, 0.9);
+      color: #00bfff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 150px;
-      border-radius: 10px;
+      border-radius: 15px;
       cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      font-size: 20px;
+      transition: transform 0.35s ease, box-shadow 0.3s ease, background 0.4s;
+      font-size: 1.2rem;
       font-weight: bold;
       text-align: center;
-      border: 2px solid #1e90ff;
+      border: 1.5px solid rgba(0, 191, 255, 0.5);
+      box-shadow: 0 0 20px rgba(0, 191, 255, 0.1);
+      backdrop-filter: blur(6px);
     }
+
     .card:hover {
-      transform: scale(1.05);
-      background: #1e90ff;
-      color: #000000;
+      transform: translateY(-8px) scale(1.05);
+      background: #00bfff;
+      color: #000;
+      box-shadow: 0 0 35px rgba(0, 191, 255, 0.6);
     }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      color: #0099cc;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      letter-spacing: 2px;
+    }
+    /* تأثير الترانزيشن العام */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
   </style>
 </head>
 <body>
   
+  <h1>?What do you want to learn</h1>
+
   <div class="grid">
     <div class="card" onclick="location.href='viewer.html'">Bone 3D</div>
-    <div class="card" onclick="location.href='body organs.html'">Body organs </div>
-    <div class="card" onclick="location.href='horse body.html'">Horse body</div>
+    <div class="card" onclick="location.href='body organs.html'">Body Organs</div>
+    <div class="card" onclick="location.href='horse body.html'">Horse Body</div>
   </div>
-  <h1 style="margin-top:80px;
-           text-align:center;
-           font-size:36px;
-           font-weight:bold;
-           color:#1e90ff;
-           text-shadow:0 0 8px rgba(30,144,255,0.3);
-           letter-spacing:10px;">
-  ?What do you want to learn
-</h1>
+
+  <footer>© 2025 Science Interactive Hub</footer>
+<script src="tr.js"></script>
+<script src="enhancer.js"></script>
 
 </body>
 </html>
