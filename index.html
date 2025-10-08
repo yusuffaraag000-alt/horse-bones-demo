@@ -6,6 +6,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مرحبا بك</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+/* كود المستطيل الجديد */
+.mobile-app-box {
+  margin-top: 20px;
+  padding: 15px 25px;
+  background-color: #17b1c5; /* أخضر */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 200px;
+  cursor: default;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.mobile-app-box:hover {
+  transform: scale(1.05);
+  background-color: #458ba0;
+}
+</style>
 </head>
 <body>
   <div class="page-transition"></div>
@@ -14,9 +36,18 @@
   <h2>3D models by 
     <a href="https://sketchfab.com/3d-models/horse-skeleton-eaca504567604e879b8ab2cf2763025e" target="_blank">Sketchfab</a>
   </h2>
-  <button id="goStart" class="enter-button" onclick="enterSite()"><h4>Start my project</h4></button>
-  <div class="designer"><h3>Model improvement and web design by Yusuffaraag</h3>
 
+  <!-- حاوية الزر والمستطيل مع محاذاة للنص بالوسط -->
+  <div class="button-container" style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <button id="goStart" class="enter-button" onclick="enterSite()"><h4>Start my project</h4></button>
+
+      <!-- المستطيل الجديد لتطبيق الموبايل -->
+      <div class="mobile-app-box">
+        Now is available Mobile App
+      </div>
+  </div>
+
+  <div class="designer"><h3>Model improvement and web design by Yusuffaraag</h3>
   </div>
 </div>
 
@@ -34,7 +65,7 @@ function enterSite() {
             height:auto;
             border-radius:8px;">
             
-            <img src="faraag.jpg" alt="Logo"
+<img src="faraag.jpg" alt="Logo"
      style="position:absolute;
             top:20px;
             right:20px;
