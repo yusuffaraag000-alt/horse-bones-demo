@@ -252,6 +252,10 @@ body, html {
 body {
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
+   background-image: url("background.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
 }
 
 body.fade-in {
