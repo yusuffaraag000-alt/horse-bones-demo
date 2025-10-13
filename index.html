@@ -72,6 +72,22 @@ function enterSite() {
 <script src="tr.js"></script>
 <script src="enhancer3.js"></script>
 <script src="enhancer.js"></script>
+<script>
+  window.addEventListener("load", () => {
+  const logo = document.querySelector("img[src='logo.jpg.jpg']"); // اللوجو القديم
+  if (!logo) return;
+
+  setTimeout(() => {
+    logo.classList.add("logo-transition-strong");
+
+    // في منتصف الأنيميشن نبدل الصورة
+    setTimeout(() => {
+      logo.src = "logo2.jpg"; // اللوجو الجديد
+    }, 900); // نص المدة
+  }, 2000); // انتظار قبل بدء التحويل
+});
+
+</script>
 
 </body>
 </html>

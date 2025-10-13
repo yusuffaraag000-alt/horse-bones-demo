@@ -265,3 +265,34 @@ body.fade-in {
 body.fade-out {
   opacity: 0;
 }
+@keyframes logoBlast {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  30% {
+    opacity: 0.6;
+    transform: scale(1.4) rotate(10deg);
+    filter: brightness(2);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.6) rotate(20deg);
+    filter: brightness(3);
+  }
+  70% {
+    opacity: 0.8;
+    transform: scale(0.8) rotate(-10deg);
+    filter: brightness(1.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+.logo-transition-strong {
+  animation: logoBlast 1.8s ease-in-out forwards;
+}
