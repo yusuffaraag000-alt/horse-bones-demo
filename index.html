@@ -1,93 +1,95 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مرحبا بك</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-/* كود المستطيل الجديد */
-.mobile-app-box {
-  margin-top: 20px;
-  padding: 15px 25px;
-  background-color: #17b1c5; /* أخضر */
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  width: 200px;
-  cursor: default;
-  transition: transform 0.3s, background-color 0.3s;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Journey Pause</title>
 
-.mobile-app-box:hover {
-  transform: scale(1.05);
-  background-color: #458ba0;
-}
-</style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at top, #111 0%, #000 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    h1 span {
+      color: #ffee00;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    .line {
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #eeff00, transparent);
+      margin: 20px auto;
+      transition: width 1.5s ease;
+    }
+
+    /* Glowing effect */
+    .glow {
+      text-shadow: 0 0 10px #afca19, 0 0 30px #fbff00;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="page-transition"></div>
-<div class="content">
-<h1>The Black Horse</h1>
-  <h2>3D models by 
-    <a href="https://sketchfab.com/3d-models/horse-skeleton-eaca504567604e879b8ab2cf2763025e" target="_blank">Sketchfab</a>
-  </h2>
 
-  <!-- حاوية الزر والمستطيل مع محاذاة للنص بالوسط -->
-  <div class="button-container" style="display:flex; flex-direction:column; align-items:center; gap:10px;">
-      <button id="goStart" class="enter-button" onclick="enterSite()"><h4>Start my project</h4></button>
+  <div class="container" id="content">
+    <h1>
+      The journey has <span class="glow">paused</span><br/>
+      and will resume in <span>2028</span>
+    </h1>
 
-      <!-- المستطيل الجديد لتطبيق الموبايل -->
-      <div class="mobile-app-box">
-        Now is available Mobile App
-      </div>
+    <div class="line" id="line"></div>
+
+    <p>See you on the next chapter.</p>
   </div>
 
-  <div class="designer"><h3>Model improvement and web design by Yusuffaraag</h3>
-  </div>
-</div>
+  <script>
+    window.addEventListener("load", () => {
+      const content = document.getElementById("content");
+      const line = document.getElementById("line");
 
-<script>
-function enterSite() {
-  window.location.href = "no.html";
-}
-</script>
-<script src="script.js"></script>
-<img src="logo.jpg.jpg" alt="Logo"
-     style="position:absolute;
-            top:20px;
-            left:50%;
-            transform:translateX(-50%);
-            width:100px;
-            height:auto;
-            border-radius:8px;">
+      // Fade & slide in
+      setTimeout(() => {
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+        content.style.transition = "1.5s ease";
+      }, 300);
 
-            
-            
-
-<script src="tr.js"></script>
-<script src="enhancer3.js"></script>
-<script src="enhancer.js"></script>
-<script>
-  window.addEventListener("load", () => {
-  const logo = document.querySelector("img[src='logo.jpg.jpg']"); // اللوجو القديم
-  if (!logo) return;
-
-  setTimeout(() => {
-    logo.classList.add("logo-transition-strong");
-
-    // في منتصف الأنيميشن نبدل الصورة
-    setTimeout(() => {
-      logo.src = "logo2.jpg"; // اللوجو الجديد
-    }, 900); // نص المدة
-  }, 2000); // انتظار قبل بدء التحويل
-});
-
-</script>
+      // Line animation
+      setTimeout(() => {
+        line.style.width = "220px";
+      }, 1200);
+    });
+  </script>
 
 </body>
 </html>
