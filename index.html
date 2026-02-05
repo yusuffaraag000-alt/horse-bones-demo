@@ -2,244 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Doctor Robot – Coming Soon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="data:,">
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
-  }
-}
-</script>
-
-<style>
-  
-
-
-*{box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
-body{margin:0;min-height:100vh;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");background-size:cover;color:#fff}
-.main{display:flex;min-height:100vh;padding:40px;gap:40px}
-.left,.center,.right{display:flex;align-items:center;justify-content:center}
-.left{flex:1}.center{flex:1.4;flex-direction:column;justify-content:center}.right{flex:.8}
-#clock3d{width:420px;height:420px}
-.logo{width:150px;margin-bottom:20px;opacity:0;transform:translateY(-30px) scale(.9);filter:blur(8px);animation:logoEnter 1.6s ease forwards}
-@keyframes logoEnter{to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-.badge{color:#d4af37;letter-spacing:4px;font-size:13px;margin-bottom:15px}
-h1{font-size:48px;margin:0 0 15px}
-h1 span{color:#d4af37}
-.desc{max-width:520px;color:#ccc;line-height:1.7;margin-bottom:30px}
-.timer{display:flex;gap:16px}
-.time-box{background:rgba(0,0,0,.65);padding:16px 18px;border-radius:14px;text-align:center;min-width:85px;box-shadow:0 0 20px rgba(212,175,55,.35),inset 0 0 12px rgba(212,175,55,.15)}
-.number{font-size:34px;color:#d4af37;font-weight:bold}.label{font-size:11px;color:#aaa}
-.xo{background:rgba(0,0,0,.7);padding:25px;border-radius:20px;box-shadow:0 0 30px rgba(212,175,55,.25);text-align:center;width:280px}
-.xo h3{color:#d4af37;letter-spacing:2px;margin-bottom:12px}
-.choose{display:flex;justify-content:center;gap:10px;margin-bottom:12px}
-.choose button{background:#111;border:1px solid #d4af37;color:#d4af37;padding:6px 14px;border-radius:10px;cursor:pointer}
-.choose button.active{background:#d4af37;color:#000}
-.scoreboard{display:flex;justify-content:space-around;margin-bottom:10px;color:#d4af37;font-weight:bold;font-size:16px}
-.board{display:grid;grid-template-columns:repeat(3,80px);gap:10px;justify-content:center;margin-bottom:10px}
-.cell{width:80px;height:80px;background:#0b0b0b;border-radius:12px;font-size:32px;display:flex;justify-content:center;align-items:center;cursor:pointer;color:#d4af37;box-shadow:inset 0 0 10px rgba(212,175,55,.2)}
-.cell:hover{background:#111}
-.status{margin-top:8px;font-size:14px;color:#ccc;text-align:center}
-.play-again{display:none;margin-top:8px;background:#d4af37;color:#000;border:none;padding:6px 14px;border-radius:10px;cursor:pointer;font-weight:bold}
-@media(max-width:1000px){.main{flex-direction:column;align-items:center;text-align:center}.timer{justify-content:center;flex-wrap:wrap}}
-</style>
-<style>
-    body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
-    url("back.png") no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-}
-</style>
+<title>Robot | Intro</title>
+<link rel="stylesheet" href="intro.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
 </head>
-
 <body>
-<div class="main">
 
-  <!-- LEFT -->
-  <div class="left"><div id="clock3d"></div></div>
-
-  <!-- CENTER -->
-  <div class="center">
-    <img src="logo.png" class="logo" alt="Logo">
-    <div class="badge">COMING SOON</div>
-    <h1>Doctor <span>Robot</span></h1>
-    <div class="desc">A new era of programming is approaching.<br>Doctor Robot will rise in two years.</div>
-    <div class="timer">
-      <div class="time-box"><div class="number" id="days">0</div><div class="label">DAYS</div></div>
-      <div class="time-box"><div class="number" id="hours">0</div><div class="label">HOURS</div></div>
-      <div class="time-box"><div class="number" id="minutes">0</div><div class="label">MINUTES</div></div>
-      <div class="time-box"><div class="number" id="seconds">0</div><div class="label">SECONDS</div></div>
-    </div>
+<!-- Landing Page -->
+<div class="landing-page" id="landing-page">
+  <!-- خلفية اللوجو -->
+  <div class="landing-bg-logo">
+    <img src="robot.png" alt="dic logo">
   </div>
 
-  <!-- RIGHT (XO GAME) -->
-  <div class="right">
-    <div class="xo">
-      <h3>PLAY WITH THE ROBOT</h3>
-      <div class="choose">
-        <button id="chooseX">X</button>
-        <button id="chooseO">O</button>
-      </div>
-      <div class="scoreboard">
-        <div>Player: <span id="playerScore">0</span></div>
-        <div>Robot: <span id="robotScore">0</span></div>
-      </div>
-      <div class="board" id="board"></div>
-      <div class="status" id="status">Choose X or O to start</div>
-      <button class="play-again" id="playAgain">PLAY AGAIN</button>
-    </div>
+  <!-- محتوى الصفحة في المنتصف -->
+  <div class="landing-content">
+    <h1 class="landing-text">Welcome to Robot</h1>
+    <button id="start-btn" class="btn">Visit now</button>
   </div>
-
 </div>
 
-<script type="module">
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+<!-- Intro Animations -->
+<div class="intro-page" id="page1">
+  <div class="page-text white-on-red">Robot</div>
+</div>
+<div class="intro-page" id="page2">
+  <div class="page-text red-on-black">is</div>
+</div>
+<div class="intro-page" id="page3">
+  <div class="logo-letters">
+    <span>C</span>
+    <span>o</span>
+    <span>m</span>
+    <span>i</span>
+    <span>n</span>
+    <span>g</span>
+  </div>
+</div>
+<div class="intro-page" id="page4">
+  <div class="page-text final-logo">Take a look</div>
+</div>
 
-/* TIMER */
-const endDate = new Date("January 1, 2028 00:00:00").getTime();
-setInterval(()=>{
-  const d = endDate - Date.now();
-  if(d<=0) return;
-  days.textContent = Math.floor(d/(1000*60*60*24));
-  hours.textContent = Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  minutes.textContent = Math.floor((d%(1000*60*60))/(1000*60));
-  seconds.textContent = Math.floor((d%(1000*60))/1000);
-},1000);
-
-/* THREE */
-const container=document.getElementById("clock3d");
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(45,1,.1,1000);
-camera.position.set(0,1.8,5);
-const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
-renderer.setSize(container.clientWidth,container.clientHeight);
-container.appendChild(renderer.domElement);
-scene.add(new THREE.AmbientLight(0xffffff,1.5));
-const light=new THREE.DirectionalLight(0xffffff,2.5);
-light.position.set(5,6,6);scene.add(light);
-let model;
-new GLTFLoader().load('./clock3d.glb',g=>{model=g.scene;model.scale.set(1.8,1.8,1.8);scene.add(model);});
-let t=0;function animate(){requestAnimationFrame(animate);if(model){t+=0.01;model.position.y=Math.sin(t)*0.05;model.rotation.y+=0.002}renderer.render(scene,camera);}
-animate();
-
-/* XO GAME WITH HARD AI AND SCORE */
-const board = document.getElementById("board");
-const status = document.getElementById("status");
-const chooseX = document.getElementById("chooseX");
-const chooseO = document.getElementById("chooseO");
-const playerScoreEl = document.getElementById("playerScore");
-const robotScoreEl = document.getElementById("robotScore");
-const playAgain = document.getElementById("playAgain");
-
-let player = null, robot = null;
-let cells = Array(9).fill("");
-let gameOver = false;
-let playerScore = 0, robotScore = 0;
-
-// اختيار اللاعب
-chooseX.onclick = () => startGame("X");
-chooseO.onclick = () => startGame("O");
-playAgain.onclick = () => startGame(player);
-
-function startGame(ch){
-  if(ch) player=ch;
-  robot = player==="X"?"O":"X";
-  chooseX.classList.remove("active");
-  chooseO.classList.remove("active");
-  if(player==="X") chooseX.classList.add("active"); else chooseO.classList.add("active");
-  status.textContent=`Player ${player} Turn`;
-  playAgain.style.display="none";
-  initBoard();
-  if(player==="O") robotMove();
-}
-
-function initBoard(){
-  board.innerHTML="";
-  cells=Array(9).fill("");
-  gameOver=false;
-  for(let i=0;i<9;i++){
-    const cell=document.createElement("div");
-    cell.className="cell";
-    cell.onclick=()=>playerMove(i);
-    board.appendChild(cell);
-  }
-}
-
-function playerMove(i){
-  if(gameOver || cells[i] || player===null) return;
-  cells[i]=player;
-  board.children[i].textContent=player;
-  checkEnd(player);
-  if(!gameOver) robotMove();
-}
-
-function robotMove(){
-  if(gameOver) return;
-  let bestScore=-Infinity, move;
-  for(let i=0;i<9;i++){
-    if(cells[i]===""){
-      cells[i]=robot;
-      let score=minimax(cells,false);
-      cells[i]="";
-      if(score>bestScore){bestScore=score; move=i;}
-    }
-  }
-  cells[move]=robot;
-  board.children[move].textContent=robot;
-  checkEnd(robot);
-}
-
-function checkEnd(ch){
-  if(checkWin(cells,ch)){
-    status.textContent=ch==="X"? (ch===player?"Player Wins!":"Robot Wins!"):(ch===player?"Player Wins!":"Robot Wins!");
-    gameOver=true;
-    if(ch===player) playerScore++; else robotScore++;
-    updateScore();
-    playAgain.style.display="inline-block";
-    return;
-  }
-  if(cells.every(c=>c)){
-    status.textContent="Draw!";
-    gameOver=true;
-    playAgain.style.display="inline-block";
-  }
-}
-
-function updateScore(){playerScoreEl.textContent=playerScore; robotScoreEl.textContent=robotScore}
-
-// Minimax AI
-function minimax(boardState,isMaximizing){
-  if(checkWin(boardState,robot)) return 10;
-  if(checkWin(boardState,player)) return -10;
-  if(boardState.every(c=>c)) return 0;
-  if(isMaximizing){
-    let best=-Infinity;
-    for(let i=0;i<9;i++){
-      if(boardState[i]===""){boardState[i]=robot; let score=minimax(boardState,false); boardState[i]=""; best=Math.max(score,best);}
-    }
-    return best;
-  }else{
-    let best=Infinity;
-    for(let i=0;i<9;i++){
-      if(boardState[i]===""){boardState[i]=player; let score=minimax(boardState,true); boardState[i]=""; best=Math.min(score,best);}
-    }
-    return best;
-  }
-}
-
-function checkWin(b,ch){
-  const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  return w.some(c=>c.every(i=>b[i]===ch));
-}
-</script>
+<script src="intro.js"></script>
 </body>
 </html>
